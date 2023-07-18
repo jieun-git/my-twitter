@@ -1,2 +1,2 @@
 # my-twitter
-twitter clone coding
+cloning Twitter with React and Firebase
