@@ -1,8 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dbService } from "../fbase";
 
 const Home = () => {
     const [tweet, setTweet] = useState('')
+    const [tweets, setTweets] = useState([])
+
+    const getTweets = async () => {
+        const dbTweets = await dbService.collection('tweets').get()
+        dbTweets.forEach((document) => {
+            const tweetObject = {
+                ...document.data(),
+                id: document.id
+            }
+            setTweets((prev) => [tweetObject, ...prev])
+        })
+    }
+
+    useEffect(() => {
+       getTweets()
+    }, [])
     const onSubmit = async (event) => {
         event.preventDefault()
         await dbService.collection('tweets').add({
@@ -32,6 +48,14 @@ const Home = () => {
                 />
                 <input type="submit" value="Tweet" />
             </form>
+            <div>
+                {tweets.map((tweet, index) => (
+                    <div key={index}>
+                        <h4>{tweet.tweet}</h4>
+                    </div>
+
+                ))}
+            </div>
         </div>
     )
 }
