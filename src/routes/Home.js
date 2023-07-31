@@ -1,7 +1,8 @@
 // routes/Home.js
 
 import { useEffect, useState } from "react";
-import { dbService } from "../fbase";
+import { dbService, storageService } from "../fbase";
+import { v4 as uuidv4 } from 'uuid';
 import Tweet from "../components/Tweet";
 
 const Home = ({ userObj }) => {
@@ -21,13 +22,22 @@ const Home = ({ userObj }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault()
-        await dbService.collection('tweets').add({
+        let attachmentUrl = ''
+
+        if (attachment !== '') {
+            const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`)
+            const response = await attachmentRef.putString(attachment, 'data_url')
+            attachmentUrl = await response.ref.getDownloadURL()
+        }
+        const tweetObj = {
             text: tweet,
             createdAt: Date.now(),
-            creatorId: userObj.uid
-        })
-
+            creatorId: userObj.uid,
+            attachmentUrl
+        }
+        await dbService.collection('tweets').add(tweetObj)
         setTweet('')
+        setAttachment('')
     }
 
     const onChange = (event) => {
