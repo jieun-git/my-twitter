@@ -12,7 +12,7 @@ const Auth = () => {
     const onChange = (event) => {
         const {
             target: {name, value}
-        } = event // 구조분해할당
+        } = event
 
         if (name === "email") setEmail(value)
         else if (name === "password") setPassword(value)
