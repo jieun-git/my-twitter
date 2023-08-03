@@ -1,13 +1,18 @@
 // TweetFactory
-import {useState} from "react";
-import {dbService, storageService} from "../fbase";
-import {v4 as uuidv4} from "uuid";
+import { useState } from "react";
+import { dbService, storageService } from "../fbase";
+import { v4 as uuidv4 } from "uuid";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const TweetFactory = ({ userObj }) => {
     const [tweet, setTweet] = useState('')
     const [attachment, setAttachment] = useState('')
 
     const onSubmit = async (event) => {
+        if (tweet === '') {
+            return
+        }
         event.preventDefault()
         let attachmentUrl = ''
 
@@ -49,23 +54,39 @@ const TweetFactory = ({ userObj }) => {
         reader.readAsDataURL(theFile)
     }
 
-    const onClearAttachment = () => setAttachment(null)
+    const onClearAttachment = () => setAttachment('')
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="factory-form">
+            <div className="factory-input-container">
+                <input
+                    type="text"
+                    onChange={onChange}
+                    value={tweet}
+                    placeholder="What's on your mind"
+                    maxLength={120}
+                    className='factory-input-input'
+                />
+                <input type="submit" value="Tweet" className="factory-input-arrow" />
+            </div>
+            <label htmlFor="attach-file" className="factory-input-label">
+                <span>Add photos</span>
+                <FontAwesomeIcon icon={faPlus} />
+            </label>
             <input
-                type="text"
-                onChange={onChange}
-                value={tweet}
-                placeholder="What's on your mind"
-                maxLength={120}
+                id="attach-file"
+                type="file"
+                accept="image/*"
+                onChange={onFileChange}
+                className="factory-input-attach"
             />
-            <input type="file" accept="image/*" onChange={onFileChange}/>
-            <input type="submit" value="Tweet" />
             { attachment && (
-                <div>
-                    <img src={attachment} width="50px" height="50px" />
-                    <button onClick={onClearAttachment}>Clear</button>
+                <div className="factory-form-attachment">
+                    <img src={attachment} style={{ backgroundImage: attachment }} />
+                    <div onClick={onClearAttachment} className="factory-form-clear">
+                        <span>Remove</span>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </div>
                 </div>
             )}
         </form>

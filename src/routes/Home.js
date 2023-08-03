@@ -19,9 +19,9 @@ const Home = ({ userObj }) => {
     }, [])
 
     return(
-        <div>
+        <div className="container">
             <TweetFactory userObj={userObj} />
-            <div>
+            <div className="home-tweet">
                 {tweets.map((tweet) => (
                     <Tweet
                         key={tweet.id}
