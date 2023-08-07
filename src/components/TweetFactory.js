@@ -3,7 +3,7 @@ import { useState } from "react";
 import { dbService, storageService } from "../fbase";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTimes, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const TweetFactory = ({ userObj }) => {
     const [tweet, setTweet] = useState('')
@@ -67,7 +67,9 @@ const TweetFactory = ({ userObj }) => {
                     maxLength={120}
                     className='factory-input-input'
                 />
-                <input type="submit" value="Tweet" className="factory-input-arrow" />
+                <button type="submit" className="tweet-btn">
+                    <FontAwesomeIcon icon={faPaperPlane} color="#04AAFF" size='2x' />
+                </button>
             </div>
             <label htmlFor="attach-file" className="factory-input-label">
                 <span>Add photos</span>
