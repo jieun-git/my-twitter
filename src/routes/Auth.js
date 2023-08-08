@@ -2,11 +2,24 @@
 
 import { authService, firebaseInstance } from "../fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { Link, useNavigate } from 'react-router-dom'
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { Link } from 'react-router-dom'
+import AuthForm from "../components/AuthForm";
+import AccountModal from "../components/AccountModal";
+import { useState } from "react";
+import TwitterLogo from '../asset/img/twitter_logo.png'
 
-const Auth = ({ setNewAccount }) => {
-    const navigate = useNavigate()
+const Auth = () => {
+    const [newAccount, setNewAccount] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const onOpenModal = () => {
+        setIsModalOpen(true)
+    }
+
+    const onCancelModal = () => {
+        setIsModalOpen(false)
+    }
 
     const onSocialClick = async (event) => {
         const {
@@ -23,24 +36,22 @@ const Auth = ({ setNewAccount }) => {
     }
 
     const onCreateAccount = () => {
-        navigate('/account')
         setNewAccount(true)
+        onOpenModal()
     }
 
     const onLogin = () => {
-        navigate('/account')
         setNewAccount(false)
+        onOpenModal()
     }
 
     return(
         <>
+            <AccountModal isOpen={isModalOpen} onClose={onCancelModal}>
+                <AuthForm newAccount={newAccount} />
+            </AccountModal>
             <div className="auth-container">
-                <FontAwesomeIcon
-                    icon={faTwitter}
-                    color="#04AAFF"
-                    size="10x"
-                    style={{ marginBottom: 30 }}
-                />
+                <img src={TwitterLogo} alt="logo" width='35%' height='35%'/>
                 <div className="auth-account-container">
                     <h1>지금 일어나고 있는 일</h1>
                     <h2>Join today.</h2>
