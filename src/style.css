@@ -38,7 +38,6 @@ form {
 }
 
 .container {
-    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,8 +62,7 @@ form {
     text-align: center;
     color: white;
     border-radius: 20px;
-    background-color: #04aaff;
-    cursor: pointer;
+    background-color: #54A7DB;
 }
 
 .cancel-btn {
@@ -115,7 +113,7 @@ form {
     height: 40px;
     padding: 0px 20px;
     color: white;
-    border: 1px solid #04aaff;
+    border: 1px solid #54A7DB;
     border-radius: 20px;
     font-weight: 500;
     font-size: 12px;
@@ -124,7 +122,7 @@ form {
 .factory-input-arrow {
     position: absolute;
     right: 0;
-    background-color: #04aaff;
+    background-color: #54A7DB;
     height: 40px;
     width: 40px;
     padding: 10px 0px;
@@ -134,7 +132,7 @@ form {
 }
 
 .factory-input-label {
-    color: #04aaff;
+    color: #54A7DB;
     cursor: pointer;
 }
 
@@ -156,7 +154,7 @@ form {
 }
 
 .factory-form-clear {
-    color: #04aaff;
+    color: #54A7DB;
     cursor: pointer;
     text-align: center;
 }
@@ -238,15 +236,11 @@ form {
 .auth-container {
     display: flex;
     height: 100vh;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 40px;
-    width: 60%;
+    width: 70%;
     margin: auto;
-}
-
-.auth-account-container {
-
 }
 
 .auth-account-container h1 {
@@ -280,17 +274,15 @@ form {
 }
 
 .auth-divider {
-    border-top: 1px solid #d3d3d34a;
     width: 150px;
     min-width: 320px;
-    margin: 10px 0;
-    position: relative;
 }
 
 .auth-divider p {
-    position: absolute;
-    top: -8px;
-    left: 47%
+    text-align: center;
+    color: #d3d3d3c7;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 .auth-create-account-btn-container {
@@ -308,9 +300,10 @@ form {
     text-align: center;
     width: 150px;
     min-width: 320px;
-    background: #04AAFF;
+    background: #54A7DB;
     margin-bottom: 10px;
     font-size: 14px;
+    text-shadow: 0 0 lightgray;
 }
 
 .auth-create-account-btn-container p {
@@ -319,7 +312,7 @@ form {
 
 .auth-create-account-btn-container a {
     font-size: 12px;
-    color: #04AAFF;
+    color: #54A7DB;
     font-weight: bold;
 }
 
@@ -344,28 +337,46 @@ form {
     width: 150px;
     min-width: 320px;
     background-color: white;
-    color: #04AAFF;
+    color: #54A7DB;
     font-size: 14px;
+    text-shadow: 0 0 lightgray;
+}
+
+.auth-account-form-container {
+    padding: 5%;
+}
+
+.auth-account-form-container h1{
+    color: black;
+    font-size: 31px;
+    font-weight: 700;
 }
 
 /* AuthForm */
 .auth-input {
-    max-width: 320px;
     width: 100%;
+    height: 45px;
     padding: 10px;
-    border-radius: 30px;
+    border-radius: 8px;
     background-color: rgba(255, 255, 255, 1);
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 14px;
     color: black;
+    border: 1px solid #D1D9DD;
 }
 
-.auth-submit {
+.auth-submit-btn {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
     text-align: center;
-    background: #04aaff;
+    background: #54A7DB;
     color: white;
-    margin-top: 10px;
+    margin-top: 45px;
     cursor: pointer;
+    border:none;
 }
 
 .auth-error {
@@ -376,13 +387,42 @@ form {
 }
 
 .auth-switch {
-    color: #04aaff;
+    color: #54A7DB;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 50px;
     display: block;
     font-size: 12px;
     text-decoration: underline;
+}
+
+.auth-birth {
+    margin: 40px 0;
+}
+
+.auth-birth b {
+    color: black;
+    font-weight: 600;
+    line-height: 35px;
+}
+
+.auth-birth p {
+    color: darkgray;
+    font-size: 12px;
+}
+
+.auth-birth-select {
+    margin-top: 10px;
+}
+.auth-birth-select select:not(:last-child) {
+    margin-right: 5px;
+}
+.auth-birth-select select {
+    width: 32%;
+    height: 45px;
+    border: 1px solid #D1D9DD;
+    border-radius: 8px;
+    color: darkgray;
 }
 
 /* Navigation */
@@ -420,4 +460,30 @@ form {
 /* Home */
 .home-tweet {
     margin-top: 30px;
+}
+
+/* Modal */
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-contents {
+    width: 35%;
+    height: 60%;
+    background: white;
+    border-radius: 8px;
+    position: relative;
+    padding: 2%;
+}
+
+.modal-close-btn {
+    border: none;
 }
