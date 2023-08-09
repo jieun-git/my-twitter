@@ -35,12 +35,12 @@ const Auth = () => {
         await authService.signInWithPopup(provider)
     }
 
-    const onCreateAccount = () => {
+    const onOpenCreateAccountModal = () => {
         setNewAccount(true)
         onOpenModal()
     }
 
-    const onLogin = () => {
+    const onOpenLoginModal = () => {
         setNewAccount(false)
         onOpenModal()
     }
@@ -67,14 +67,14 @@ const Auth = () => {
                         <p>또는</p>
                     </div>
                     <div className="auth-create-account-btn-container">
-                        <button className="auth-create-account-btn" onClick={onCreateAccount}>
+                        <button className="auth-create-account-btn" onClick={onOpenCreateAccountModal}>
                            계정 만들기
                         </button>
                         <p>가입하시려면 <Link to="/">쿠키 사용</Link>을 포함해 이용약관과 <Link to="/">개인정보 처리방침</Link>에 동의해야 합니다.</p>
                     </div>
                     <div className="auth-login-container">
                         <h3>이미 트위터에 가입하셨나요?</h3>
-                        <button className="auth-login-btn" onClick={onLogin}>
+                        <button className="auth-login-btn" onClick={onOpenLoginModal}>
                             로그인
                         </button>
                     </div>
