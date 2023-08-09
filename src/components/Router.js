@@ -3,20 +3,19 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
-import Navigation from "components/Navigation";
 import Profile from "../routes/Profile";
 
 const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => {
     const setDisplayName = () => {
         if (!userObj.displayName) {
-            userObj.displayName = userObj.email.split('@')[0]
+            userObj.displayName = userObj?.email?.split('@')[0]
         }
         return userObj
     }
 
     return(
         <Router>
-            {isLoggedIn && <Navigation userObj={setDisplayName()} />}
+            {/*{isLoggedIn && <Navigation userObj={setDisplayName()} />}*/}
             <Routes>
                 {
                     isLoggedIn ?
