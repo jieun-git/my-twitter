@@ -18,35 +18,21 @@ const AuthForm = ({ newAccount }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault()
-        try {
+         try {
             if (newAccount) {
-                const data =
-                    await authService.createUserWithEmailAndPassword(email, password)
-                console.log('new account data', data)
+                await authService.createUserWithEmailAndPassword(email, password)
             } else {
-                const data =
-                    await authService.signInWithEmailAndPassword(email, password)
-                console.log('login data', data)
+                await authService.signInWithEmailAndPassword(email, password)
             }
         } catch (e) {
             setError(e.message)
         }
     }
 
-    const onCreateAccount = () => {
-        alert('계정 생성 완료')
-        // TODO: 컨펌 창 만들기
-    }
-
-    const onConfirm = () => {
-        // TODO: 컨펌창 ok 버튼 클릭하면 onSubmit() 호출되게 로직 구현
-        // type="submit"
-    }
-
     return(
         <div className="auth-account-form-container">
             {newAccount ? <h1>계정을 생성하세요</h1> : <h1>로그인</h1>}
-            <form onSubmit={onSubmit} className="container">
+            <form onSubmit={onSubmit} className="auth-form-modal">
                 <input
                     name="email"
                     type="text"
@@ -73,32 +59,32 @@ const AuthForm = ({ newAccount }) => {
                             <select name="month" id="month">
                                 <option>월</option>
                                 {MONTH.map((m) => (
-                                    <option value={m}>{m}</option>
+                                    <option key={m} value={m}>{m}</option>
                                 ))}
                             </select>
                             <select name="day" id="day">
                                 <option>일</option>
                                 {DAY.map((d) => (
-                                    <option value={d}>{d}</option>
+                                    <option key={d} value={d}>{d}</option>
                                 ))}
                             </select>
                             <select name="year" id="year">
                                 <option>년도</option>
                                 {YEAR.map((y) => (
-                                    <option value={y}>{y}</option>
+                                    <option key={y} value={y}>{y}</option>
                                 ))}
                             </select>
                         </div>
                     </div>
                 )}
-            </form>
-            <button
-                onClick={onCreateAccount}
-                className="auth-submit-btn"
-            >
+                <button
+                    type="submit"
+                    className="auth-submit-btn"
+                >
+                    {newAccount ? "Create Account" : "Log In"}
+                </button>
                 {error && <span className="authError">{error}</span>}
-                {newAccount ? "Create Account" : "Log In"}
-            </button>
+            </form>
         </div>
     )
 }
