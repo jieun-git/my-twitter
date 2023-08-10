@@ -1,16 +1,15 @@
 // routes/Profile.js
 
 import { useNavigate } from 'react-router-dom'
-import { authService, dbService } from "../fbase"
+import { dbService } from "../fbase"
 import { useEffect, useState } from "react";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Profile = ({ userObj, refreshUser }) => {
     const navigate = useNavigate()
 
     const [newDisplayName, setNewDisplayName] = useState(userObj.displayName)
-    const onLogout = () => {
-        authService.signOut().then(() => navigate('/'))
-    }
 
     const getMyTweets = async() => {
         const tweets =
@@ -45,19 +44,34 @@ const Profile = ({ userObj, refreshUser }) => {
         }
     }
 
+    const onClick = () => {
+        alert('!!!')
+    }
+
+    const onGoHome = () => {
+        navigate('/')
+    }
+
     return(
-        <div className="container">
-            <form onSubmit={onSubmit} className="profile-form">
-                <input
-                    type="text"
-                    placeholder="Display name"
-                    onChange={onChange}
-                    value={newDisplayName}
-                    className="form-input"
-                />
-                <input type="submit" value="Update Profile" className="profile-update-input" />
-            </form>
-            <span className="form-btn cancel-btn log-out" onClick={onLogout}>Log Out</span>
+        <div className="profile-wrapper">
+            <span onClick={onGoHome}>
+                <FontAwesomeIcon icon={faArrowLeft} color="white" size="2x"/>
+            </span>
+            <div className="profile-container">
+                <h1>{userObj.displayName}'s Profile</h1>
+                <form onSubmit={onSubmit} className="profile-form">
+                    <input
+                        type="text"
+                        placeholder="Display name"
+                        onChange={onChange}
+                        value={newDisplayName}
+                        className="form-input"
+                    />
+                    <button type="submit" onClick={onClick} className="form-btn">
+                        Update Profile
+                    </button>
+                </form>
+            </div>
         </div>
     )
 }
