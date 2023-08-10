@@ -13,10 +13,6 @@ const Auth = () => {
     const [newAccount, setNewAccount] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const onOpenModal = () => {
-        setIsModalOpen(true)
-    }
-
     const onCancelModal = () => {
         setIsModalOpen(false)
     }
@@ -37,12 +33,12 @@ const Auth = () => {
 
     const onOpenCreateAccountModal = () => {
         setNewAccount(true)
-        onOpenModal()
+        setIsModalOpen(true)
     }
 
     const onOpenLoginModal = () => {
         setNewAccount(false)
-        onOpenModal()
+        setIsModalOpen(true)
     }
 
     return(
