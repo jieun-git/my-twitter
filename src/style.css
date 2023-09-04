@@ -62,7 +62,7 @@ form {
     text-align: center;
     background-color: white;
     color: black;
-    margin: 20px 0 10px 0;
+    margin: 10px 0 10px 0;
     font-size: 18px;
 }
 
@@ -96,6 +96,7 @@ form {
 .profile-container h1 {
     font-size: 31px;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .profile-container {
@@ -449,7 +450,8 @@ form {
 }
 
 .auth-birth-select {
-    margin-top: 10px;
+    margin: 10px 0;
+    display: flex;
 }
 .auth-birth-select select:not(:last-child) {
     margin-right: 5px;
