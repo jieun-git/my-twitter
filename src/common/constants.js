@@ -1,5 +1,5 @@
 export const YEAR = []
-export const MONTH = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 12 ]
+export const MONTH = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
 export const DAY = []
 
 for (let i=2023; i>=1923; i--) {
@@ -60,6 +60,52 @@ export const NOW_TREND = [
         desc: '',
         at: '30대 여성'
     }
+]
 
-
+export const NATION_CODE = [
+    {
+        code: 82,
+        country: 'KOR',
+        icon: '🇰🇷'
+    },
+    {
+        code: 1,
+        country: 'US',
+        icon: '🇺🇸'
+    },
+    {
+        code: 20,
+        country: 'EG',
+        icon: '🇪🇬'
+    },
+    {
+        code: 33,
+        country: 'FR',
+        icon: '🇫🇷'
+    },
+    {
+        code: 39,
+        country: 'IT',
+        icon: '🇮🇹'
+    },
+    {
+        code: 44,
+        country: 'UK',
+        icon: '🇬🇧'
+    },
+    {
+        code: 55,
+        country: 'BR',
+        icon: '🇧🇷'
+    },
+    {
+        code: 60,
+        country: 'MAL',
+        icon: '🇺🇲'
+    },
+    {
+        code: 977,
+        country: 'NEP',
+        icon: '🇳🇵'
+    },
 ]
